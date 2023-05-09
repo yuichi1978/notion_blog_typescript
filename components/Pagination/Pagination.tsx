@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { FC } from "react";
 import { getPageLink } from "../../lib/blog-helper";
 
 interface Props {
@@ -7,7 +6,7 @@ interface Props {
   tag: string;
 }
 
-const Pagination: FC = (props: Props) => {
+const Pagination = (props: Props) => {
   const { numberOfPage, tag } = props;
 
   let pages: number[] = [];
