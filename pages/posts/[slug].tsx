@@ -6,6 +6,11 @@ import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import Link from "next/link";
 // import { defaultStyle } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
+type Props = {
+  params: string;
+  post: string;
+};
+
 export const getStaticPaths = async () => {
   const allPosts = await getAllPosts();
   const paths = allPosts.map(({ slug }) => ({ params: { slug } }));
@@ -16,7 +21,7 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async ({ params }: Props) => {
   const post = await getSinglePost(params.slug);
 
   return {
