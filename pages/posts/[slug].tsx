@@ -6,9 +6,17 @@ import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import Link from "next/link";
 // import { defaultStyle } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
-type Props = {
-  params: string;
-  post: string;
+type PostMetadata = {
+  title: string;
+  date: string;
+  tags: string[];
+};
+ 
+type PostProps = {
+  post: {
+    metadata: PostMetadata;
+    markdown: string;
+  };
 };
 
 export const getStaticPaths = async () => {
@@ -21,8 +29,8 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async ({ params }: Props) => {
-  const post = await getSinglePost(params);
+export const getStaticProps = async ({ params }) => {
+  const post = await getSinglePost(params.slug);
 
   return {
     props: {
@@ -32,7 +40,7 @@ export const getStaticProps = async ({ params }: Props) => {
   };
 };
 
-const Post = ({ post }) => {
+const Post = ({ post }: PostProps) => {
   return (
     <section className="container lg:px-2 px-5 h-screen lg:w-2/5 mx-auto mt-20">
       <h2 className="w-full text-2xl font-medium">{post.metadata.title}</h2>
