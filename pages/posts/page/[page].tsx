@@ -37,7 +37,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-const BlogPageList = ({ postsByPage, numberOfPage, allTags }) => {
+const BlogPageList = ({ postsByPage, numberOfPage, allTags }: any) => {
   return (
     <div className="container h-full w-full mx-auto">
       <Head>
@@ -58,7 +58,7 @@ const BlogPageList = ({ postsByPage, numberOfPage, allTags }) => {
             </div>
           ))}
         </section>
-        <Pagination numberOfPage={numberOfPage} />
+        <Pagination numberOfPage={numberOfPage} tag={""} />
         <Tag tags={allTags} />
       </main>
     </div>
