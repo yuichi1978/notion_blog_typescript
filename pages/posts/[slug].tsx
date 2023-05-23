@@ -29,7 +29,7 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async ({ params }: any) => {
   const post = await getSinglePost(params.slug);
 
   return {
