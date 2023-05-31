@@ -21,7 +21,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const currentPage = context.params?.page!;
+  const currentPage = context.params?.page ?? '';
   const postsByPage = await getPostsByPage(parseInt(currentPage.toString(), 10));
   const numberOfPage = await getNumberOfPages();
 
