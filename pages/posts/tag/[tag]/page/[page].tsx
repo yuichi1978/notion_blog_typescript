@@ -29,8 +29,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const currentPage: string = context.params?.page.toString();
-  const currentTag: string = context.params?.tag.toString();
+  const currentPage: string = context.params?.page ? context.params.page.toString() : "";
+  const currentTag: string = context.params?.tag ? context.params.tag.toString() : "";
 
   const upperCaseCurrentTag = currentTag.charAt(0).toUpperCase() + currentTag.slice(1);
 
@@ -47,11 +47,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
       currentTag,
       allTags,
     },
-    revalidate: 60 * 60 * 6,
+    revalidate: 10,
   };
 };
 
-const BlogTagPageList = ({ numberOfPagesByTag, posts, currentTag, allTags }) => {
+const BlogTagPageList = ({ numberOfPagesByTag, posts, currentTag, allTags }: any) => {
   return (
     <div className="container h-full w-full mx-auto">
       <Head>
