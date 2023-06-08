@@ -33,13 +33,13 @@ const SinglePost = (props: Props) => {
         </section>
       ) : (
         <section className="lg:w-1/2 bg-teal-300 mb-8 mx-auto rounded-md p-5 shadow-2xl hover:shadow-none hover:translate-y-1 transition-all duration-300">
-          <div className="flex items-center gap-3">
-            <h2 className="text-gray-100 text-2xl font-medium mb-2">
+          <div className="">
+            <h2 className="text-gray-100 text-xl font-medium mb-2">
               <Link href={`/posts/${slug}`}>{title}</Link>
             </h2>
-            <div className="text-gray-200">{date}</div>
+            <div className="text-gray-200 mb-2">{date}</div>
             {tags.map((tag: string, index: number) => (
-              <span className="text-white bg-gray-500 rounded-xl px-2 font-medium" key={index} >
+              <span className="text-white bg-gray-500 rounded-lg p-1 mr-2" key={index} >
                 <Link href={`/posts/tag/${tag}/page/1`}>
                   {tag}
                 </Link>
